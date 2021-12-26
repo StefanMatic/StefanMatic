@@ -1,0 +1,55 @@
+﻿@model TaskRestAPI.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+
+        <h4>Project</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TableName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TableName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { rowKey = Model.RowKey, partitionKey = Model.PartitionKey }) |
+            @Html.ActionLink("Back to List", "Index") |
+            @Html.ActionLink("Tasks", "Index", "Task", new { projectName = Model.PartitionKey }, null)
+        </p>
+    </div>
+</div>

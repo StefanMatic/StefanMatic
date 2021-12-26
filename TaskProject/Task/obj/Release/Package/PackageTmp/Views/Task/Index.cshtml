@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TaskRestAPI.Models.Task>
+
+@{
+    ViewBag.Title = "All tasks";
+}
+
+<h2>All tasks from project: @ViewBag.ProjectName</h2>
+<hr />
+<div class="col-md-12 text-center">
+    <p>
+        @Html.ActionLink("Create New", "Create", new { projectName = @ViewBag.ProjectName }, new { @class = "btn btn-large btn-info" })
+    </p>
+</div>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { rowKey=item.RowKey, partitionKey = item.PartitionKey }) |
+            @Html.ActionLink("Details", "Details", new { rowKey=item.RowKey, partitionKey = item.PartitionKey } ) |
+            @Html.ActionLink("Delete", "Delete", new { rowKey=item.RowKey, partitionKey = item.PartitionKey })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="col-md-12 text-center">
+    @Html.ActionLink("All projects", "Index", "Project", null, new { @class = "btn btn-large btn-info" })
+</div>
